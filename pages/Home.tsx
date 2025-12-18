@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Layers, Map, Compass, CheckCircle2, ArrowLeft, Scan, Satellite, Globe2, Wifi, Crosshair } from 'lucide-react';
+import { Layers, Map, Compass, CheckCircle2, ArrowLeft, Scan, Satellite, Globe2, Wifi, Crosshair, Ruler, LayoutGrid } from 'lucide-react';
 
 const Home: React.FC = () => {
   return (
@@ -56,33 +56,36 @@ const Home: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-slate-900 p-8 rounded-xl shadow-sm border border-slate-800 hover:shadow-lg hover:border-[#FFD400]/50 transition-all group">
               <div className="w-14 h-14 bg-[#FFD400]/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-[#FFD400] transition-colors">
+                <Ruler className="h-8 w-8 text-[#FFD400] group-hover:text-slate-900" />
+              </div>
+              <h4 className="text-xl font-bold text-white mb-3">جریب‌کشی و تعیین حدود</h4>
+              <p className="text-gray-400 leading-relaxed text-justify">
+                اندازه‌گیری دقیق اراضی زراعتی و مسکونی جهت تثبیت مالکیت و رفع اختلافات ملکی با دقت میلی‌متری.
+              </p>
+            </div>
+
+            <div className="bg-slate-900 p-8 rounded-xl shadow-sm border border-slate-800 hover:shadow-lg hover:border-[#FFD400]/50 transition-all group">
+              <div className="w-14 h-14 bg-[#FFD400]/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-[#FFD400] transition-colors">
                 <Compass className="h-8 w-8 text-[#FFD400] group-hover:text-slate-900" />
               </div>
-              <h4 className="text-xl font-bold text-white mb-3">سروی و توپوگرافی</h4>
+              <h4 className="text-xl font-bold text-white mb-3">نقشه‌برداری توپوگرافی</h4>
               <p className="text-gray-400 leading-relaxed text-justify">
-                تهیه نقشه‌های توپوگرافی دقیق با مقیاس‌های مختلف جهت مطالعات اولیه طرح‌های عمرانی و شهرسازی.
+                تهیه نقشه‌های توپوگرافی دقیق و نمایش عوارض زمین جهت مطالعات اولیه طرح‌های عمرانی و شهرسازی.
               </p>
             </div>
 
             <div className="bg-slate-900 p-8 rounded-xl shadow-sm border border-slate-800 hover:shadow-lg hover:border-[#FFD400]/50 transition-all group">
               <div className="w-14 h-14 bg-[#FFD400]/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-[#FFD400] transition-colors">
-                <Map className="h-8 w-8 text-[#FFD400] group-hover:text-slate-900" />
+                <LayoutGrid className="h-8 w-8 text-[#FFD400] group-hover:text-slate-900" />
               </div>
-              <h4 className="text-xl font-bold text-white mb-3">تفکیک اراضی (Boundary)</h4>
+              <h4 className="text-xl font-bold text-white mb-3">تفکیک و تقسیمات زمین</h4>
               <p className="text-gray-400 leading-relaxed text-justify">
-                تعیین حدود دقیق املاک، پیاده‌سازی پلاک‌های ثبتی و حل اختلافات ملکی با دقت سانتی‌متر.
+                افراز و قطعه‌بندی اصولی اراضی بزرگ بر اساس استانداردهای مهندسی و ضوابط قانونی.
               </p>
             </div>
-
-            <div className="bg-slate-900 p-8 rounded-xl shadow-sm border border-slate-800 hover:shadow-lg hover:border-[#FFD400]/50 transition-all group">
-              <div className="w-14 h-14 bg-[#FFD400]/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-[#FFD400] transition-colors">
-                <Layers className="h-8 w-8 text-[#FFD400] group-hover:text-slate-900" />
-              </div>
-              <h4 className="text-xl font-bold text-white mb-3">طراحی مهندسی</h4>
-              <p className="text-gray-400 leading-relaxed text-justify">
-                طراحی پلان‌های معماری و مهندسی بر اساس داده‌های دقیق نقشه‌برداری برای بهینه‌سازی ساخت.
-              </p>
-            </div>
+          </div>
+          <div className="mt-12 text-center">
+            <Link to="/services" className="text-[#FFD400] font-bold hover:underline">مشاهده همه خدمات ما ...</Link>
           </div>
         </div>
       </div>
