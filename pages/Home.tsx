@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Layers, Map, Compass, CheckCircle2, ArrowLeft, Scan, Satellite, Globe2, Wifi, Crosshair, Ruler, LayoutGrid } from 'lucide-react';
+import { 
+  Layers, Map, Compass, CheckCircle2, ArrowLeft, Scan, Satellite, 
+  Globe2, Wifi, Crosshair, Ruler, LayoutGrid, Zap, Target, Construction, Landmark 
+} from 'lucide-react';
 
 const Home: React.FC = () => {
   return (
@@ -90,125 +93,106 @@ const Home: React.FC = () => {
         </div>
       </div>
 
-      {/* Equipment Showcase Section */}
-      <div className="py-20 bg-slate-900 border-t border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-           <div className="text-center mb-16">
-            <h2 className="text-[#FFD400] font-bold tracking-wide uppercase mb-2">تکنولوژی و تجهیزات</h2>
-            <h3 className="text-3xl font-extrabold text-white sm:text-4xl">دقت میلی‌متری با ابزار روز دنیا</h3>
-            <p className="mt-4 text-gray-400 max-w-2xl mx-auto">
-              ما از جدیدترین نسل تجهیزات نقشه‌برداری برای تضمین سرعت و دقت در پروژه‌های شما استفاده می‌کنیم.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {/* Total Station */}
-            <div className="relative group overflow-hidden rounded-2xl shadow-xl border border-slate-700 h-[400px]">
-               <img 
-                 src="https://images.unsplash.com/photo-1617621453264-b0d367831f99?q=80&w=1000&auto=format&fit=crop" 
-                 alt="Total Station Equipment" 
-                 className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-               />
-               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent flex flex-col justify-end p-8">
-                  <div className="flex items-center space-x-3 space-x-reverse mb-2">
-                    <div className="bg-[#FFD400] p-2 rounded-lg text-slate-900">
-                      <Scan className="h-6 w-6" />
-                    </div>
-                    <h4 className="text-2xl font-bold text-white">Total Station (توتال استیشن)</h4>
-                  </div>
-                  <p className="text-gray-200 text-justify">
-                    بهره‌گیری از توتال استیشن‌های لیزری پیشرفته جهت برداشت جزئیات با دقت میلی‌متر، پیاده‌سازی اکس‌ها و کنترل شاقولی ستون‌ها در پروژه‌های ساختمانی بلندمرتبه.
-                  </p>
-               </div>
-            </div>
-
-            {/* DGPS */}
-            <div className="relative group overflow-hidden rounded-2xl shadow-xl border border-slate-700 h-[400px]">
-               <img 
-                 src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=1000&auto=format&fit=crop" 
-                 alt="DGPS GNSS Equipment" 
-                 className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-               />
-               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent flex flex-col justify-end p-8">
-                  <div className="flex items-center space-x-3 space-x-reverse mb-2">
-                    <div className="bg-[#FFD400] p-2 rounded-lg text-slate-900">
-                      <Satellite className="h-6 w-6" />
-                    </div>
-                    <h4 className="text-2xl font-bold text-white">DGPS / GNSS (جی‌پی‌اس دو فرکانسه)</h4>
-                  </div>
-                  <p className="text-gray-200 text-justify">
-                    استفاده از گیرنده‌های مولتی‌فرکانس GNSS برای تعیین موقعیت آنی (RTK) و استاتیک، اتصال به سامانه شمیم و تهیه نقشه‌های UTM با سرعت و دقت فوق‌العاده در سطوح وسیع.
-                  </p>
-               </div>
-            </div>
-          </div>
+      {/* DGPS/GNSS Deep Dive Section - EXPANDED */}
+      <div className="py-24 bg-slate-900 border-y border-slate-800 relative overflow-hidden">
+        {/* Abstract Tech Background */}
+        <div className="absolute top-0 right-0 w-full h-full opacity-5 pointer-events-none">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-[#FFD400] blur-[120px] rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500 blur-[120px] rounded-full translate-x-1/2 translate-y-1/2"></div>
         </div>
-      </div>
-
-      {/* DGPS/GNSS Deep Dive Section */}
-      <div className="py-24 bg-slate-950 border-t border-slate-800 relative overflow-hidden">
-        {/* Background elements */}
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-[#FFD400]/5 -skew-x-12 transform origin-top-right"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
-            
+          <div className="flex flex-col lg:flex-row items-center gap-16 mb-20">
             <div className="lg:w-1/2 space-y-8">
               <div className="inline-flex items-center space-x-2 space-x-reverse bg-[#FFD400]/10 border border-[#FFD400]/20 rounded-full px-4 py-1">
                 <Satellite className="w-4 h-4 text-[#FFD400]" />
-                <span className="text-[#FFD400] text-sm font-bold">تکنولوژی برتر</span>
+                <span className="text-[#FFD400] text-sm font-bold">تکنولوژی تعیین موقعیت ماهواره‌ای</span>
               </div>
               
               <h2 className="text-3xl md:text-5xl font-black text-white leading-tight">
-                قدرت <span className="text-[#FFD400]">DGPS و GNSS</span> <br/>
-                در دستان مهندسین ما
+                دقت فوق‌مهندسی با <br/>
+                <span className="text-[#FFD400]">DGPS Multi-Frequency</span>
               </h2>
               
               <p className="text-gray-400 text-lg leading-relaxed text-justify">
-                سیستم تعیین موقعیت جهانی تفاضلی (DGPS) و سامانه‌های ماهواره‌ای ناوبری جهانی (GNSS)، ستون فقرات نقشه‌برداری مدرن هستند. ما با استفاده از گیرنده‌های چندفرکانسه، موقعیت دقیق عوارض زمین را با خطای کمتر از یک سانتی‌متر محاسبه می‌کنیم. این فناوری به ما امکان می‌دهد در هر شرایط آب و هوایی و در مناطق صعب‌العبور، اطلاعات مکانی قابل اعتمادی ارائه دهیم.
+                سیستم DGPS (جی‌پی‌اس تفاضلی) فراتر از یک تعیین موقعیت ساده است. ما با استفاده از ایستگاه‌های مبنا (Base) و متحرک (Rover)، خطاهای اتمسفری و مداری را در لحظه اصلاح می‌کنیم. این یعنی دستیابی به مختصات دقیق در سیستم تصویر UTM با خطای کمتر از ۱۰ میلی‌متر، که برای پروژه‌های حساس زیربنایی حیاتی است.
               </p>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
-                <div className="bg-slate-900 p-5 rounded-xl border border-slate-800 hover:border-[#FFD400]/30 transition-colors group">
-                  <Globe2 className="w-10 h-10 text-[#FFD400] mb-3 group-hover:scale-110 transition-transform" />
-                  <h4 className="text-white font-bold mb-1">پوشش جهانی</h4>
-                  <p className="text-sm text-gray-400">اتصال همزمان به GPS, GLONASS, Galileo, BeiDou برای پایداری سیگنال.</p>
-                </div>
-                <div className="bg-slate-900 p-5 rounded-xl border border-slate-800 hover:border-[#FFD400]/30 transition-colors group">
-                  <Wifi className="w-10 h-10 text-[#FFD400] mb-3 group-hover:scale-110 transition-transform" />
-                  <h4 className="text-white font-bold mb-1">RTK آنی</h4>
-                  <p className="text-sm text-gray-400">برداشت و پیاده‌سازی مختصات به‌صورت لحظه‌ای (Real-Time) با سرعت بالا.</p>
-                </div>
-                <div className="bg-slate-900 p-5 rounded-xl border border-slate-800 hover:border-[#FFD400]/30 transition-colors group">
-                  <Crosshair className="w-10 h-10 text-[#FFD400] mb-3 group-hover:scale-110 transition-transform" />
-                  <h4 className="text-white font-bold mb-1">دقت میلی‌متری</h4>
-                  <p className="text-sm text-gray-400">ایده‌آل برای پروژه‌های حساس، بیس پلیت‌ها و شبکه‌های کنترل ژئودزی.</p>
-                </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[
+                  { icon: Target, title: "تثبیت آنی (RTK)", desc: "برداشت نقاط با سرعت ۱ ثانیه در هر نقطه." },
+                  { icon: Zap, title: "اتصال به شمیم", desc: "هماهنگی کامل با شبکه یکپارچه کشوری." }
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start space-x-3 space-x-reverse p-4 bg-slate-950/50 rounded-xl border border-slate-800">
+                    <item.icon className="w-6 h-6 text-[#FFD400] flex-shrink-0" />
+                    <div>
+                      <h4 className="text-white font-bold text-sm">{item.title}</h4>
+                      <p className="text-gray-500 text-xs mt-1">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
-            <div className="lg:w-1/2">
-              <div className="relative">
-                <div className="absolute -inset-4 bg-gradient-to-r from-[#FFD400]/20 to-transparent rounded-2xl blur-lg"></div>
+            <div className="lg:w-1/2 w-full">
+              <div className="relative group">
+                <div className="absolute -inset-2 bg-gradient-to-r from-[#FFD400] to-blue-500 rounded-2xl blur opacity-20 group-hover:opacity-40 transition-opacity"></div>
                 <img 
                   src="https://images.unsplash.com/photo-1574689049597-7e6df3db18b4?q=80&w=1000&auto=format&fit=crop" 
-                  alt="Engineer using GNSS Receiver" 
-                  className="relative rounded-2xl shadow-2xl border border-slate-700 w-full" 
+                  alt="GNSS Application" 
+                  className="relative rounded-2xl shadow-2xl border border-slate-700 object-cover h-[450px] w-full" 
                 />
-                {/* Floating Stats Card */}
-                <div className="absolute -bottom-6 -right-6 bg-slate-800 p-4 rounded-xl shadow-xl border border-slate-700 hidden md:block">
-                  <div className="flex items-center space-x-3 space-x-reverse">
-                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                    <span className="text-white font-mono text-sm" dir="ltr">Signal Locked: 32 Sats</span>
-                  </div>
-                  <div className="flex items-center space-x-3 space-x-reverse mt-2">
-                    <div className="w-3 h-3 bg-[#FFD400] rounded-full"></div>
-                    <span className="text-white font-mono text-sm" dir="ltr">Accuracy: 8mm</span>
-                  </div>
+                <div className="absolute top-4 left-4 bg-slate-900/90 backdrop-blur-md p-3 rounded-lg border border-slate-700">
+                   <div className="flex items-center space-x-2 space-x-reverse">
+                     <span className="flex h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
+                     <span className="text-[10px] text-gray-300 font-mono">DGPS FIXED: H: 0.008m / V: 0.012m</span>
+                   </div>
                 </div>
               </div>
             </div>
+          </div>
 
+          {/* Use Cases Section */}
+          <div className="space-y-12">
+            <div className="text-center">
+              <h3 className="text-2xl font-bold text-white mb-4">کاربردهای عملیاتی در پروژه‌ها</h3>
+              <div className="h-1 w-20 bg-[#FFD400] mx-auto rounded-full"></div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Use Case 1 */}
+              <div className="bg-slate-950 p-8 rounded-2xl border border-slate-800 hover:border-[#FFD400]/40 transition-all group">
+                <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-500 transition-colors">
+                  <Construction className="w-6 h-6 text-blue-500 group-hover:text-white" />
+                </div>
+                <h4 className="text-xl font-bold text-white mb-3">طراحی و اجرای مسیر</h4>
+                <p className="text-gray-400 text-sm leading-relaxed text-justify">
+                  در پروژه‌های سرک‌سازی و کانال‌سازی، DGPS امکان تعیین دقیق قوس‌ها، شیب‌بندی‌های حساس و حجم عملیات خاکی را در فواصل طولانی بدون نیاز به پیمایش‌های سنتی فراهم می‌کند.
+                </p>
+              </div>
+
+              {/* Use Case 2 */}
+              <div className="bg-slate-950 p-8 rounded-2xl border border-slate-800 hover:border-[#FFD400]/40 transition-all group">
+                <div className="w-12 h-12 bg-[#FFD400]/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-[#FFD400] transition-colors">
+                  <Landmark className="w-6 h-6 text-[#FFD400] group-hover:text-slate-900" />
+                </div>
+                <h4 className="text-xl font-bold text-white mb-3">کاداستر و تثبیت اراضی</h4>
+                <p className="text-gray-400 text-sm leading-relaxed text-justify">
+                  برای جلوگیری از تداخل املاک، ما با استفاده از GNSS مولتی‌فرکانس، پلاک‌های ثبتی را در سیستم UTM پیاده می‌کنیم تا حدود ملک از نظر حقوقی در سطح جهانی غیرقابل انکار باشد.
+                </p>
+              </div>
+
+              {/* Use Case 3 */}
+              <div className="bg-slate-950 p-8 rounded-2xl border border-slate-800 hover:border-[#FFD400]/40 transition-all group">
+                <div className="w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-green-500 transition-colors">
+                  <Globe2 className="w-6 h-6 text-green-500 group-hover:text-white" />
+                </div>
+                <h4 className="text-xl font-bold text-white mb-3">ایجاد شبکه‌های ژئودتیک</h4>
+                <p className="text-gray-400 text-sm leading-relaxed text-justify">
+                  نصب و قرائت بنچ‌مارک‌های اصلی پروژه با متد Static (قرائت طولانی مدت) جهت ایجاد شبکه مختصات مادر برای پروژه‌های سدسازی، پل‌سازی و مجتمع‌های صنعتی.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -15,6 +15,19 @@ export interface ProjectItem {
   imageUrl: string;
 }
 
+export interface BlogPost {
+  id: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  author: string;
+  date: string;
+  category: string;
+  image: string;
+  slug: string;
+  tags: string[];
+}
+
 export interface NavItem {
   label: string;
   path: string;

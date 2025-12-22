@@ -1,6 +1,7 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Linkedin, Facebook, Instagram } from 'lucide-react';
+import { Phone, Mail, MapPin, Linkedin, Facebook, Instagram, MessageCircle } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -44,19 +45,20 @@ const Footer: React.FC = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3 space-x-reverse">
                 <MapPin className="h-5 w-5 text-[#FFD400]" />
-                <span className="text-sm">کابل، افغانستان، خیابان شهید مزاری، ساختمان مهندسین</span>
+                <span className="text-sm">کابل، کارته نو، بهارستان</span>
               </div>
               <div className="flex items-center space-x-3 space-x-reverse">
                 <Phone className="h-5 w-5 text-[#FFD400]" />
-                <span className="text-sm" dir="ltr">+93 799 123 456</span>
+                <span className="text-sm" dir="ltr">+93 73 066 6694</span>
               </div>
               <div className="flex items-center space-x-3 space-x-reverse">
                 <Mail className="h-5 w-5 text-[#FFD400]" />
-                <span className="text-sm" dir="ltr">info@daqiqsurvey.af</span>
+                <span className="text-sm" dir="ltr">info@survey-af.com</span>
               </div>
             </div>
             
             <div className="flex space-x-4 space-x-reverse pt-4">
+              <a href="https://wa.me/message/OR5LWN2YSATYK1?src=qr" target="_blank" rel="noopener noreferrer" className="bg-slate-800 p-2 rounded-full hover:bg-green-500 hover:text-white transition-colors" title="واتساپ"><MessageCircle className="h-5 w-5" /></a>
               <a href="#" className="bg-slate-800 p-2 rounded-full hover:bg-[#FFD400] hover:text-slate-900 transition-colors"><Facebook className="h-5 w-5" /></a>
               <a href="#" className="bg-slate-800 p-2 rounded-full hover:bg-[#FFD400] hover:text-slate-900 transition-colors"><Instagram className="h-5 w-5" /></a>
               <a href="#" className="bg-slate-800 p-2 rounded-full hover:bg-[#FFD400] hover:text-slate-900 transition-colors"><Linkedin className="h-5 w-5" /></a>
@@ -65,7 +67,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="border-t border-slate-800 mt-12 pt-8 text-center text-sm text-gray-500">
-          <p>&copy; {new Date().getFullYear()} شرکت مهندسی دقیق. تمامی حقوق محفوظ است.</p>
+          <p>&copy; {new Date().getFullYear()} شرکت مهندسی دقیق (survey-af.com). تمامی حقوق محفوظ است.</p>
         </div>
       </div>
     </footer>
