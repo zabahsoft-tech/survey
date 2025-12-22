@@ -59,9 +59,9 @@ const Footer: React.FC = () => {
             
             <div className="flex space-x-4 space-x-reverse pt-4">
               <a href="https://wa.me/message/OR5LWN2YSATYK1?src=qr" target="_blank" rel="noopener noreferrer" className="bg-slate-800 p-2 rounded-full hover:bg-green-500 hover:text-white transition-colors" title="واتساپ"><MessageCircle className="h-5 w-5" /></a>
-              <a href="#" className="bg-slate-800 p-2 rounded-full hover:bg-[#FFD400] hover:text-slate-900 transition-colors"><Facebook className="h-5 w-5" /></a>
-              <a href="#" className="bg-slate-800 p-2 rounded-full hover:bg-[#FFD400] hover:text-slate-900 transition-colors"><Instagram className="h-5 w-5" /></a>
-              <a href="#" className="bg-slate-800 p-2 rounded-full hover:bg-[#FFD400] hover:text-slate-900 transition-colors"><Linkedin className="h-5 w-5" /></a>
+              <a href="https://www.facebook.com/share/1BxCTocSYH/" target="_blank" rel="noopener noreferrer" className="bg-slate-800 p-2 rounded-full hover:bg-[#FFD400] hover:text-slate-900 transition-colors" title="فیسبوک"><Facebook className="h-5 w-5" /></a>
+              <a href="https://www.instagram.com/jribcashi?igsh=bmFqb3YzaXhqaTNq" target="_blank" rel="noopener noreferrer" className="bg-slate-800 p-2 rounded-full hover:bg-[#FFD400] hover:text-slate-900 transition-colors" title="اینستاگرام"><Instagram className="h-5 w-5" /></a>
+              <a href="#" className="bg-slate-800 p-2 rounded-full hover:bg-[#FFD400] hover:text-slate-900 transition-colors" title="لینکدین"><Linkedin className="h-5 w-5" /></a>
             </div>
           </div>
         </div>
