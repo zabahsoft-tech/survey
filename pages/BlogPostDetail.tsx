@@ -1,14 +1,19 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Calendar, User, ArrowRight, Tag, Share2, Facebook, Twitter, MessageCircle } from 'lucide-react';
-import { blogPosts } from '../data/blogData';
+import { db } from '../lib/db';
 
 const BlogPostDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  
-  const post = blogPosts.find(p => p.id === id);
+  const [post, setPost] = useState<any>(null);
+
+  useEffect(() => {
+    const posts = db.get('blogPosts');
+    const found = posts.find(p => p.id === id);
+    setPost(found);
+  }, [id]);
 
   if (!post) {
     return (
@@ -70,88 +75,15 @@ const BlogPostDetail: React.FC = () => {
               {post.excerpt}
             </p>
 
-            {/* Rendered Body Content */}
+            {/* Body */}
             <div className="text-gray-300 text-lg leading-loose space-y-6 text-justify">
-              {post.content.split('\n').map((paragraph, idx) => {
+              {post.content?.split('\n').map((paragraph: string, idx: number) => {
                 if (paragraph.startsWith('###')) {
                   return <h3 key={idx} className="text-2xl font-bold text-white mt-10 mb-4">{paragraph.replace('###', '').trim()}</h3>;
-                }
-                if (paragraph.startsWith('-')) {
-                  return (
-                    <li key={idx} className="list-disc list-inside mr-4 text-gray-400">
-                      {paragraph.replace('-', '').trim()}
-                    </li>
-                  );
-                }
-                if (paragraph.match(/^\d\./)) {
-                  return (
-                    <div key={idx} className="flex items-start mr-4 mb-2">
-                      <span className="text-[#FFD400] font-bold ml-2">{paragraph.split('.')[0]}.</span>
-                      <p className="text-gray-400">{paragraph.split('.').slice(1).join('.')}</p>
-                    </div>
-                  );
                 }
                 return paragraph.trim() ? <p key={idx}>{paragraph}</p> : <br key={idx} />;
               })}
             </div>
-
-            {/* Tags */}
-            <div className="mt-12 pt-8 border-t border-slate-800">
-              <div className="flex flex-wrap gap-2">
-                {post.tags.map(tag => (
-                  <span key={tag} className="flex items-center bg-slate-950 text-gray-400 px-3 py-1 rounded-lg text-sm border border-slate-800">
-                    <Tag className="h-3 w-3 ml-2 text-[#FFD400]" />
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-          
-          {/* CTA Section */}
-          <div className="bg-gradient-to-r from-yellow-600/20 to-slate-900 p-8 rounded-3xl border border-yellow-500/20 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div>
-              <h3 className="text-xl font-bold text-white mb-2">نیاز به جریب‌کشی دقیق دارید؟</h3>
-              <p className="text-gray-400 text-sm">همین حالا مشاوره رایگان دریافت کنید.</p>
-            </div>
-            <Link 
-              to="/request-quote" 
-              className="bg-[#FFD400] text-slate-900 px-8 py-3 rounded-xl font-bold hover:bg-yellow-500 transition-all whitespace-nowrap"
-            >
-              ثبت درخواست آنلاین
-            </Link>
-          </div>
-        </div>
-
-        {/* Sidebar */}
-        <div className="space-y-8">
-          {/* Share */}
-          <div className="bg-slate-900 p-6 rounded-2xl border border-slate-800">
-            <h4 className="text-white font-bold mb-4 flex items-center">
-              <Share2 className="h-4 w-4 ml-2 text-[#FFD400]" />
-              اشتراک‌گذاری
-            </h4>
-            <div className="flex justify-between">
-              <button className="p-2 bg-slate-800 rounded-lg hover:text-[#FFD400] transition-colors"><Facebook className="h-5 w-5" /></button>
-              <button className="p-2 bg-slate-800 rounded-lg hover:text-[#FFD400] transition-colors"><Twitter className="h-5 w-5" /></button>
-              <button className="p-2 bg-slate-800 rounded-lg hover:text-[#FFD400] transition-colors"><MessageCircle className="h-5 w-5" /></button>
-            </div>
-          </div>
-
-          {/* About Author Snippet */}
-          <div className="bg-slate-900 p-6 rounded-2xl border border-slate-800">
-            <div className="flex items-center space-x-3 space-x-reverse mb-4">
-              <div className="w-10 h-10 bg-[#FFD400] rounded-full flex items-center justify-center font-bold text-slate-900">
-                {post.author.charAt(0)}
-              </div>
-              <div>
-                <h4 className="text-white text-sm font-bold">{post.author}</h4>
-                <p className="text-gray-500 text-[10px]">کارشناس مهندسی دقیق</p>
-              </div>
-            </div>
-            <p className="text-gray-400 text-xs leading-relaxed">
-              متخصص در امور کاداستر و نقشه‌برداری با بیش از ۸ سال سابقه در پروژه‌های ملی افغانستان.
-            </p>
           </div>
         </div>
       </div>

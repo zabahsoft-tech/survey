@@ -1,3 +1,4 @@
+
 import { LucideIcon } from 'lucide-react';
 
 export interface ServiceItem {
@@ -12,7 +13,8 @@ export interface ProjectItem {
   title: string;
   category: string;
   location: string;
-  imageUrl: string;
+  imageUrl: string; // This will remain for backward compatibility (first image)
+  images?: string[]; // Array of base64 images
 }
 
 export interface BlogPost {

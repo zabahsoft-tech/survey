@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -11,19 +11,23 @@ import Contact from './pages/Contact';
 import Blog from './pages/Blog';
 import BlogPostDetail from './pages/BlogPostDetail';
 import RequestQuote from './pages/RequestQuote';
-import Login from './pages/Login';
+import Auth from './pages/Auth';
 import AdminDashboard from './pages/AdminDashboard';
 import { AuthProvider, useAuth } from './context/AuthContext';
 
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { isAuthenticated } = useAuth();
-  return isAuthenticated ? <>{children}</> : <Navigate to="/login" />;
+  return isAuthenticated ? <>{children}</> : <Navigate to="/auth" />;
 };
 
 const AppContent: React.FC = () => {
+  const location = useLocation();
+  const isAdminPath = location.pathname.startsWith('/admin');
+  const isAuthPath = location.pathname === '/auth' || location.pathname === '/login';
+
   return (
     <div className="flex flex-col min-h-screen bg-slate-950 text-gray-100">
-      <Navbar />
+      {!isAdminPath && !isAuthPath && <Navbar />}
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -34,7 +38,8 @@ const AppContent: React.FC = () => {
           <Route path="/blog/:id" element={<BlogPostDetail />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/request-quote" element={<RequestQuote />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/login" element={<Navigate to="/auth" replace />} />
           <Route 
             path="/admin" 
             element={
@@ -43,9 +48,10 @@ const AppContent: React.FC = () => {
               </ProtectedRoute>
             } 
           />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
-      <Footer />
+      {!isAdminPath && !isAuthPath && <Footer />}
     </div>
   );
 };

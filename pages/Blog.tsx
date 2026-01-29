@@ -1,10 +1,16 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, User, ArrowLeft } from 'lucide-react';
-import { blogPosts } from '../data/blogData';
+import { db } from '../lib/db';
 
 const Blog: React.FC = () => {
+  const [posts, setPosts] = useState<any[]>([]);
+
+  useEffect(() => {
+    setPosts(db.get('blogPosts'));
+  }, []);
+
   return (
     <div className="bg-slate-950 min-h-screen py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -16,7 +22,7 @@ const Blog: React.FC = () => {
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {blogPosts.map((post) => (
+          {posts.map((post) => (
             <article key={post.id} className="bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 hover:border-[#FFD400]/50 transition-all group flex flex-col">
               <div className="relative h-56 overflow-hidden">
                 <img 
@@ -53,7 +59,7 @@ const Blog: React.FC = () => {
               <div className="p-8 pt-0 border-t border-slate-800 mt-auto">
                 <div className="flex justify-between items-center">
                    <div className="flex gap-2">
-                     {post.tags.slice(0, 2).map(tag => (
+                     {post.tags?.slice(0, 2).map((tag: string) => (
                        <span key={tag} className="text-[10px] text-gray-500 bg-slate-800 px-2 py-0.5 rounded italic">#{tag}</span>
                      ))}
                    </div>

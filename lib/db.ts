@@ -2,12 +2,8 @@
 /**
  * Mock Database Service
  * Provides a simple interface for CRUD operations using browser's localStorage.
- * This can be easily replaced with an actual API client in the future.
  */
 export const db = {
-  /**
-   * Retrieves all records from a specific table (key in localStorage).
-   */
   get: (table: string): any[] => {
     try {
       const data = localStorage.getItem(`db_${table}`);
@@ -17,16 +13,17 @@ export const db = {
       return [];
     }
   },
+
+  getSingle: (table: string): any => {
+    const data = db.get(table);
+    return data.length > 0 ? data[0] : null;
+  },
   
-  /**
-   * Inserts a new record into the specified table.
-   * Generates a unique ID and timestamp for the new record.
-   */
   insert: (table: string, record: any): any => {
     const data = db.get(table);
     const newRecord = { 
       ...record, 
-      id: Math.random().toString(36).substr(2, 9), // Simple unique ID generation
+      id: record.id || Math.random().toString(36).substr(2, 9),
       createdAt: new Date().toISOString() 
     };
     data.push(newRecord);
@@ -34,9 +31,6 @@ export const db = {
     return newRecord;
   },
 
-  /**
-   * Updates an existing record by ID.
-   */
   update: (table: string, id: string, updates: any): void => {
     const data = db.get(table);
     const index = data.findIndex((item: any) => item.id === id);
@@ -46,12 +40,31 @@ export const db = {
     }
   },
 
-  /**
-   * Removes a record from the table by ID.
-   */
+  updateSingle: (table: string, updates: any): void => {
+    const data = db.get(table);
+    if (data.length > 0) {
+      data[0] = { ...data[0], ...updates };
+    } else {
+      data.push({ ...updates, id: 'singleton' });
+    }
+    localStorage.setItem(`db_${table}`, JSON.stringify(data));
+  },
+
   delete: (table: string, id: string): void => {
     const data = db.get(table);
     const filtered = data.filter((item: any) => item.id !== id);
     localStorage.setItem(`db_${table}`, JSON.stringify(filtered));
+  },
+
+  seed: (table: string, initialData: any[]) => {
+    if (db.get(table).length === 0) {
+      localStorage.setItem(`db_${table}`, JSON.stringify(initialData));
+    }
+  },
+
+  seedSingle: (table: string, initialData: any) => {
+    if (db.get(table).length === 0) {
+      localStorage.setItem(`db_${table}`, JSON.stringify([{ ...initialData, id: 'singleton' }]));
+    }
   }
 };

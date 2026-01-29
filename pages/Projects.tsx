@@ -1,53 +1,15 @@
-import React from 'react';
-import { MapPin } from 'lucide-react';
-import { ProjectItem } from '../types';
 
-const projects: ProjectItem[] = [
-  {
-    id: '1',
-    title: 'توپوگرافی شهرک مسکونی امید',
-    category: 'مسکونی',
-    location: 'غرب کابل',
-    imageUrl: 'https://picsum.photos/id/1031/600/400'
-  },
-  {
-    id: '2',
-    title: 'جریب‌کشی اراضی زراعتی گل‌تپه',
-    category: 'زراعتی',
-    location: 'پروان',
-    imageUrl: 'https://picsum.photos/id/1047/600/400'
-  },
-  {
-    id: '3',
-    title: 'نقشه‌برداری مسیر سرک حلقوی',
-    category: 'زیربنایی',
-    location: 'مزار شریف',
-    imageUrl: 'https://picsum.photos/id/1015/600/400'
-  },
-  {
-    id: '4',
-    title: 'تفکیک زمین‌های تجارتی مرکز شهر',
-    category: 'تجارتی',
-    location: 'هرات',
-    imageUrl: 'https://picsum.photos/id/122/600/400'
-  },
-  {
-    id: '5',
-    title: 'مانیتورینگ گودبرداری برج الماس',
-    category: 'مسکونی',
-    location: 'کابل، شهر نو',
-    imageUrl: 'https://picsum.photos/id/142/600/400'
-  },
-  {
-    id: '6',
-    title: 'تهیه نقشه کاداستر باغات پسته',
-    category: 'زراعتی',
-    location: 'بادغیس',
-    imageUrl: 'https://picsum.photos/id/214/600/400'
-  }
-];
+import React, { useEffect, useState } from 'react';
+import { MapPin } from 'lucide-react';
+import { db } from '../lib/db';
 
 const Projects: React.FC = () => {
+  const [projects, setProjects] = useState<any[]>([]);
+
+  useEffect(() => {
+    setProjects(db.get('projects'));
+  }, []);
+
   return (
     <div className="bg-slate-950 py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
